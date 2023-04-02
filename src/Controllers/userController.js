@@ -312,7 +312,7 @@ const updateUser = async function (req, res) {
     if (!updateUserData) {
       return res
         .status(404)
-        .send({ status: false, message: "Updation Failed" });
+        .send({ status: false, message: "User is already deleted" });
     }
     return res
       .status(200)
