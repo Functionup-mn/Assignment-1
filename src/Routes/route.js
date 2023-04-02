@@ -9,6 +9,10 @@ router.post("/signUp",  userController.createUser)
 //<<<<<<<<------------------- login User Api -------------------->>>>>>>>>>>>>
 router.post("/login", userController.loginUser)
 
+//<<<<<<<<------------------- get User Api -------------------->>>>>>>>>>>>>
+
+router.get("/users", userController.getUser)
+
 //<<<<<<<<------------------- update User Api -------------------->>>>>>>>>>>>>
 
 router.put("/user/:userId", middleware.authentication, userController.updateUser )

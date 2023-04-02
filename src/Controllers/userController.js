@@ -177,6 +177,24 @@ const loginUser = async function (req, res) {
   }
 };
 
+//<<<<<<<<------------------- Get-Users -------------------->>>>>>>>>>>>>
+
+const getUser = async function (req, res) {
+  try {
+      let queries = req.query;
+      const userData = await userModel.find({
+          $or: [{ isDeleted: false }, queries ],
+      }).select({ ISBN: 0, subcategory: 0, isDeleted: 0, deletedAt: 0, createdAt: 0, updatedAt: 0, __v: 0 }).collation({ locale: "en" }).sort({ name: 1 });
+
+      if (userData.length == 0) return res.status(404).send({ status: false, message: "no user found" })
+
+      res.status(200).send({ status: true, message: "Users list", data: userData })
+
+  } catch (err) {
+      return res.status(500).send({ status: false, message: err.message })
+  }
+}
+
 //<<<<<<<<------------------- Update-User -------------------->>>>>>>>>>>>>
 
 const updateUser = async function (req, res) {
@@ -374,3 +392,4 @@ module.exports.createUser = createUser;
 module.exports.loginUser = loginUser;
 module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
+module.exports.getUser = getUser
