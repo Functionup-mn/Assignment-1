@@ -181,9 +181,8 @@ const loginUser = async function (req, res) {
 
 const getUser = async function (req, res) {
   try {
-      let queries = req.query;
       const userData = await userModel.find({
-          $or: [{ isDeleted: false }, queries ],
+          $eq: [{ isDeleted: false } ],
       }).select({ ISBN: 0, subcategory: 0, deletedAt: 0, createdAt: 0, updatedAt: 0, __v: 0 }).collation({ locale: "en" }).sort({ name: 1 });
 
       if (userData.length == 0) return res.status(404).send({ status: false, message: "no user found" })
