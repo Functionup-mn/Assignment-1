@@ -4,7 +4,7 @@ const middleware = require('../Middleware/auth')
 const userController = require('../Controllers/userController')
 
 //<<<<<<<<------------------- User Api -------------------->>>>>>>>>>>>>
-router.post("/register",  userController.createUser)
+router.post("/signUp",  userController.createUser)
 
 //<<<<<<<<------------------- login User Api -------------------->>>>>>>>>>>>>
 router.post("/login", userController.loginUser)
