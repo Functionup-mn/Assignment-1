@@ -15,9 +15,9 @@ mongoose.connect("mongodb+srv://mnadeem:h1QaS5NNUx2zm2tM@cluster0.v4od3qa.mongod
 
 app.use('/',route)  
 
-app.use('/', (req, res)=>{
-    res.send("Welcome to the server home page")
-})
+// app.use('/', (req, res)=>{
+//     res.send("Welcome to the server home page")
+// })
 
 app.use( (req ,res) => {
     res.status(404).send({status : false , message :`Page Not Found , Given URL ${req.url} is incorrect for this application.`})
